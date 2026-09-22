@@ -1,1 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪組 好き顔9選</title>
 
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:#354c43;
+  background:
+    radial-gradient(circle at 10% 8%,rgba(158,205,180,.22),transparent 24%),
+    radial-gradient(circle at 90% 35%,rgba(199,229,213,.28),transparent 25%),
+    linear-gradient(180deg,#fcfffd 0%,#f3fbf7 50%,#e7f5ed 100%);
+  min-height:100vh;
+}
+
+button{font-family:inherit}
+
+.app{
+  width:min(100%,620px);
+  margin:0 auto;
+  min-height:100vh;
+  padding:15px 14px 35px;
+  position:relative;
+  overflow:hidden;
+}
+
+.content{position:relative;z-index:2}
+
+/* 雪の結晶 */
+
+.snowflake{
+  position:relative;
+  width:34px;
+  height:34px;
+}
+
+.snowflake i{
+  position:absolute;
+  width:2px;
+  height:34px;
+  left:16px;
+  top:0;
+  border-radius:99px;
+  background:#69aa89;
+}
+
+.snowflake i:nth-child(1){transform:rotate(0deg)}
+.snowflake i:nth-child(2){transform:rotate(60deg)}
+.snowflake i:nth-child(3){transform:rotate(120deg)}
+
+.decor-snow{
+  position:fixed;
+  opacity:.12;
+  pointer-events:none;
+  z-index:0;
+}
+
+.decor-snow.s1{top:5%;left:-7px;transform:scale(2.5) rotate(12deg)}
+.decor-snow.s2{top:42%;right:-5px;transform:scale(2) rotate(30deg)}
+.decor-snow.s3{bottom:6%;left:12px;transform:scale(2.3) rotate(-15deg)}
+
+.header{
+  text-align:center;
+  padding:14px 10px 16px;
+}
+
+.eyebrow{
+  color:#679b82;
+  font-family:Georgia,serif;
+  letter-spacing:.22em;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.title{
+  margin:0;
+  font-size:29px;
+  line-height:1.25;
+  font-weight:900;
+  color:#354c43;
+}
+
+.title-number{color:#4f9d78}
+
+.title-decoration{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:13px;
+  margin:12px auto 0;
+}
+
+.title-decoration::before,
+.title-decoration::after{
+  content:"";
+  width:85px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#8fc5aa);
+}
+
+.title-decoration::after{
+  background:linear-gradient(90deg,#8fc5aa,transparent);
+}
+
+.mini-snow{transform:scale(.55)}
+
+/* ステップ */
+
+.stepper{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  margin:4px 5px 18px;
+  position:relative;
+}
+
+.stepper::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  left:12%;
+  right:12%;
+  height:3px;
+  background:#dcebe3;
+  z-index:0;
+}
+
+.step{
+  width:25%;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.step-circle{
+  width:36px;
+  height:36px;
+  margin:0 auto 7px;
+  border-radius:50%;
+  background:#e4f0ea;
+  color:#779687;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:900;
+  border:3px solid #fff;
+}
+
+.step-label{
+  font-size:11px;
+  font-weight:900;
+  color:#779687;
+}
+
+.step.active .step-circle,
+.step.done .step-circle{
+  background:#58a37e;
+  color:#fff;
+}
+
+.step.active .step-label,
+.step.done .step-label{color:#438b69}
+
+.step.active .step-circle{
+  box-shadow:0 0 0 4px rgba(88,163,126,.13);
+}
+
+/* 共通 */
+
+.panel{
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(164,205,184,.55);
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 16px 45px rgba(72,130,101,.10);
+  backdrop-filter:blur(8px);
+}
+
+.home{text-align:center;padding:30px 18px 32px}
+
+.home-snow{
+  width:76px;
+  height:76px;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.home-snow .snowflake{
+  transform:scale(1.8);
+}
+
+.home h2{font-size:26px;margin:0 0 15px}
+
+.home p{
+  margin:0 auto;
+  max-width:390px;
+  font-size:14px;
+  line-height:1.9;
+  color:#668073;
+}
+
+.flow{
+  margin:25px auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.flow span{
+  padding:7px 11px;
+  background:#eef9f3;
+  border:1px solid #b7d9c7;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  color:#4c8f6e;
+}
+
+.flow b{color:#91bda6;font-weight:500}
+
+.primary-button{
+  border:0;
+  width:100%;
+  min-height:54px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#75ba98,#478f6c);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(62,133,99,.22);
+  cursor:pointer;
+}
+
+.secondary-button{
+  border:1px solid #b8d9c8;
+  background:#fff;
+  color:#4b8b6c;
+  width:100%;
+  min-height:50px;
+  border-radius:16px;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.button-row{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:8px;
+}
+
+.primary-button:active,.secondary-button:active{transform:scale(.985)}
+
+.progress-wrap{margin-bottom:13px}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  margin:0 3px 8px;
+  color:#668875;
+  font-size:12px;
+  font-weight:800;
+}
+
+.progress-track{
+  width:100%;
+  height:7px;
+  background:#dceee4;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,#82c2a2,#4c9974);
+  border-radius:999px;
+}
+
+.stage-title{
+  text-align:center;
+  margin:7px 0 5px;
+  font-size:21px;
+  font-weight:900;
+}
+
+.stage-subtitle{
+  text-align:center;
+  margin:0 0 14px;
+  font-size:12px;
+  color:#718d7f;
+}
+
+/* カード */
+
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.member-card{
+  position:relative;
+  border:1px solid rgba(177,211,194,.65);
+  background:#fff;
+  border-radius:17px;
+  padding:6px 6px 9px;
+  box-shadow:0 6px 17px rgba(75,125,101,.08);
+  cursor:pointer;
+  transition:.15s;
+}
+
+.member-card.selected{
+  border:2px solid #55a27c;
+  background:#f1faf5;
+  transform:translateY(-2px);
+}
+
+.member-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:12px;
+  display:block;
+  background:#e8f3ed;
+}
+
+.member-name{
+  font-size:11px;
+  line-height:1.35;
+  font-weight:800;
+  text-align:center;
+  margin-top:7px;
+  color:#3e554a;
+  min-height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 選択雪マーク */
+
+.selected-snow{
+  display:none;
+  position:absolute;
+  right:-6px;
+  top:-6px;
+  width:37px;
+  height:37px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid #8bc4a7;
+  z-index:4;
+  box-shadow:0 3px 7px rgba(55,115,85,.16);
+}
+
+.selected-snow .snowflake{
+  transform:scale(.63);
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+.member-card.selected .selected-snow{display:block}
+
+.bottom-actions{
+  position:sticky;
+  bottom:8px;
+  margin-top:14px;
+  padding:10px;
+  border-radius:20px;
+  background:rgba(247,253,250,.95);
+  border:1px solid rgba(177,214,195,.75);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 30px rgba(70,125,98,.13);
+  z-index:10;
+}
+
+.selection-count{
+  text-align:center;
+  color:#52876c;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+/* 2択 */
+
+.compare-wrap{padding:10px 12px 18px}
+
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:17px;
+}
+
+.compare-card{
+  border:1px solid #bddbc9;
+  border-radius:22px;
+  background:#fff;
+  padding:8px 8px 13px;
+  box-shadow:0 10px 28px rgba(72,125,100,.10);
+  cursor:pointer;
+}
+
+.compare-card:active{transform:scale(.985)}
+
+.compare-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:16px;
+  display:block;
+}
+
+.compare-name{
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+  font-weight:900;
+}
+
+/* 結果 */
+
+.result-heading{text-align:center;padding:7px 0 18px}
+.result-heading h2{margin:0;font-size:27px}
+
+.result-decoration{
+  width:120px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#72ad8f,transparent);
+  margin:14px auto 0;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.result-card{
+  position:relative;
+  background:#fff;
+  border:1px solid #c8e0d4;
+  border-radius:18px;
+  padding:7px 7px 10px;
+  box-shadow:0 7px 20px rgba(70,120,95,.09);
+}
+
+.result-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:13px;
+  display:block;
+}
+
+.rank-badge{
+  position:absolute;
+  top:0;
+  left:0;
+  transform:translate(-18%,-18%);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  border:2px solid #fff;
+  z-index:2;
+}
+
+.result-name{
+  text-align:center;
+  font-size:11px;
+  font-weight:900;
+  margin-top:7px;
+  min-height:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.result-buttons{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(38,65,52,.55);
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  width:min(100%,430px);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:24px;
+  background:#fff;
+  padding:17px;
+}
+
+.modal-box img{width:100%;border-radius:16px;display:block}
+
+.modal-actions{
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+
+@media(max-width:380px){
+  .app{padding-left:10px;padding-right:10px}
+  .title{font-size:27px}
+  .member-grid{gap:6px}
+  .member-name{font-size:10px}
+  .step-label{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="decor-snow s1 snowflake"><i></i><i></i><i></i></div>
+<div class="decor-snow s2 snowflake"><i></i><i></i><i></i></div>
+<div class="decor-snow s3 snowflake"><i></i><i></i><i></i></div>
+
+<div class="app">
+<div class="content">
+
+<header class="header">
+  <div class="eyebrow">YUKI-GUMI TOP 9</div>
+  <h1 class="title">雪組 好き顔<span class="title-number">9選</span></h1>
+
+  <div class="title-decoration">
+    <div class="mini-snow">
+      <div class="snowflake"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</header>
+
+<div id="steps"></div>
+<main id="app"></main>
+
+</div>
+</div>
+
+<div class="modal" id="imageModal">
+  <div class="modal-box">
+    <img id="generatedImage" alt="雪組 好き顔9選">
+
+    <div class="modal-actions">
+      <button class="primary-button" id="shareImageButton">画像を保存・共有</button>
+      <button class="secondary-button" id="closeModalButton">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<script src="members.js"></script>
+
+<script>
+const SAVE_KEY="yukigumiTop9StateV1";
+const PAGE_SIZE=9;
+const NARROW_SIZE=4;
+const FINAL_COUNT=9;
+
+const app=document.getElementById("app");
+const steps=document.getElementById("steps");
+
+let state=createInitialState();
+
+function createInitialState(){
+  return{
+    stage:"home",
+    preliminaryPool:[],
+    preliminaryPage:0,
+    preliminarySelected:[],
+    narrowPool:[],
+    narrowSelected:[],
+    narrowRound:0,
+    rankPool:[],
+    ranked:[],
+    insertIndex:0,
+    low:0,
+    high:0,
+    currentMiddle:0,
+    result:[]
+  };
+}
+
+function saveState(){
+  localStorage.setItem(SAVE_KEY,JSON.stringify(state));
+}
+
+function clearSavedState(){
+  localStorage.removeItem(SAVE_KEY);
+}
+
+function shuffle(array){
+  const copy=[...array];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
+}
+
+function memberById(id){
+  return members.find(member=>member.id===id);
+}
+
+function snowHTML(){
+  return `<div class="snowflake"><i></i><i></i><i></i></div>`;
+}
+
+function currentStep(){
+  if(state.stage==="preliminary") return 1;
+  if(state.stage==="narrow") return 2;
+  if(state.stage==="ranking") return 3;
+  if(state.stage==="result") return 4;
+  return 0;
+}
+
+function renderSteps(){
+  if(state.stage==="home"){
+    steps.innerHTML="";
+    return;
+  }
+
+  const current=currentStep();
+  const labels=["予選","20人","順位","結果"];
+
+  steps.innerHTML=`
+    <div class="stepper">
+      ${labels.map((label,index)=>{
+        const number=index+1;
+        let className="";
+        if(number<current) className="done";
+        else if(number===current) className="active";
+
+        return`
+          <div class="step ${className}">
+            <div class="step-circle">${number}</div>
+            <div class="step-label">${label}</div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+function render(){
+  renderSteps();
+  saveState();
+
+  if(state.stage==="home") renderHome();
+  else if(state.stage==="preliminary") renderPreliminary();
+  else if(state.stage==="narrow") renderNarrow();
+  else if(state.stage==="ranking") renderRanking();
+  else if(state.stage==="result") renderResult();
+}
+
+function renderHome(){
+  app.innerHTML=`
+    <section class="panel home">
+
+      <div class="home-snow">
+        ${snowHTML()}
+      </div>
+
+      <h2>雪組 好き顔9選</h2>
+
+      <p>
+        雪組生の中から好きな顔を選んで、
+        あなただけのTOP9を作ります。
+      </p>
+
+      <div class="flow">
+        <span>73人</span><b>→</b>
+        <span>20人</span><b>→</b>
+        <span>2択</span><b>→</b>
+        <span>TOP9</span>
+      </div>
+
+      <button class="primary-button" onclick="startGame()">はじめる</button>
+    </section>
+  `;
+}
+
+function startGame(){
+  state=createInitialState();
+  state.stage="preliminary";
+  state.preliminaryPool=shuffle(members.map(member=>member.id));
+  render();
+}
+
+function renderPreliminary(){
+  const totalPages=Math.ceil(state.preliminaryPool.length/PAGE_SIZE);
+  const start=state.preliminaryPage*PAGE_SIZE;
+  const pageIds=state.preliminaryPool.slice(start,start+PAGE_SIZE);
+  const progress=((state.preliminaryPage+1)/totalPages)*100;
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>好きな顔を選ぶ</span>
+        <span>${state.preliminaryPage+1} / ${totalPages}</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h2 class="stage-title">好きな人を選んでね</h2>
+      <p class="stage-subtitle">何人選んでもOK</p>
+
+      <div class="member-grid">
+        ${pageIds.map(id=>{
+          const member=memberById(id);
+          const selected=state.preliminarySelected.includes(id);
+
+          return`
+            <div class="member-card ${selected?"selected":""}" onclick="togglePreliminary(${id})">
+              <img class="member-photo" src="${member.image}" alt="${member.name}">
+
+              <div class="selected-snow">
+                ${snowHTML()}
+              </div>
+
+              <div class="member-name">${member.name}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="bottom-actions">
+        <div class="selection-count">
+          現在 ${state.preliminarySelected.length}人 選択中
+        </div>
+
+        <div class="button-row">
+          <button class="secondary-button"
+            onclick="previousPreliminary()"
+            ${state.preliminaryPage===0?"disabled":""}>
+            前へ
+          </button>
+
+          <button class="primary-button" onclick="nextPreliminary()">
+            ${state.preliminaryPage===totalPages-1?"選択を決定":"次へ"}
+          </button>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function togglePreliminary(id){
+  if(state.preliminarySelected.includes(id)){
+    state.preliminarySelected=
+      state.preliminarySelected.filter(selectedId=>selectedId!==id);
+  }else{
+    state.preliminarySelected.push(id);
+  }
+
+  renderPreliminary();
+  saveState();
+}
+
+function previousPreliminary(){
+  if(state.preliminaryPage>0){
+    state.preliminaryPage--;
+    render();
+  }
+}
+
+function nextPreliminary(){
+  const totalPages=Math.ceil(state.preliminaryPool.length/PAGE_SIZE);
+
+  if(state.preliminaryPage<totalPages-1){
+    state.preliminaryPage++;
+    render();
+    return;
+  }
+
+  if(state.preliminarySelected.length<FINAL_COUNT){
+    alert(`現在${state.preliminarySelected.length}人です。TOP9を作るため、9人以上選んでね！前へ戻って追加できます。`);
+    return;
+  }
+
+  beginNarrowing([...state.preliminarySelected]);
+}
+
+function beginNarrowing(ids){
+  if(ids.length>20){
+    state.stage="narrow";
+    state.narrowPool=shuffle(ids);
+    state.narrowSelected=[];
+    state.narrowRound=0;
+    render();
+    return;
+  }
+
+  startRanking(ids);
+}
+
+function renderNarrow(){
+  const start=state.narrowRound*NARROW_SIZE;
+  const pageIds=state.narrowPool.slice(start,start+NARROW_SIZE);
+
+  if(pageIds.length===0){
+    finishNarrowing();
+    return;
+  }
+
+  const totalRounds=Math.ceil(state.narrowPool.length/NARROW_SIZE);
+  const progress=((state.narrowRound+1)/totalRounds)*100;
+  const remaining=Math.max(0,20-state.narrowSelected.length);
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>20人まで絞る</span>
+        <span>${state.narrowRound+1} / ${totalRounds}</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h2 class="stage-title">より好きな人を選んでね</h2>
+      <p class="stage-subtitle">あと ${remaining}人 選べます</p>
+
+      <div class="member-grid">
+        ${pageIds.map(id=>{
+          const member=memberById(id);
+          const selected=state.narrowSelected.includes(id);
+
+          return`
+            <div class="member-card ${selected?"selected":""}" onclick="toggleNarrow(${id})">
+              <img class="member-photo" src="${member.image}" alt="${member.name}">
+
+              <div class="selected-snow">
+                ${snowHTML()}
+              </div>
+
+              <div class="member-name">${member.name}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="bottom-actions">
+        <div class="selection-count">${state.narrowSelected.length} / 20人</div>
+
+        <div class="button-row">
+          <button class="secondary-button"
+            onclick="previousNarrow()"
+            ${state.narrowRound===0?"disabled":""}>
+            前へ
+          </button>
+
+          <button class="primary-button" onclick="nextNarrowRound()">
+            ${state.narrowRound===totalRounds-1?"20人を決定":"次へ"}
+          </button>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function toggleNarrow(id){
+  if(state.narrowSelected.includes(id)){
+    state.narrowSelected=
+      state.narrowSelected.filter(selectedId=>selectedId!==id);
+  }else{
+    if(state.narrowSelected.length>=20){
+      alert("選べるのは20人までです");
+      return;
+    }
+
+    state.narrowSelected.push(id);
+  }
+
+  renderNarrow();
+  saveState();
+}
+
+function previousNarrow(){
+  if(state.narrowRound>0){
+    state.narrowRound--;
+    render();
+  }
+}
+
+function nextNarrowRound(){
+  const totalRounds=Math.ceil(state.narrowPool.length/NARROW_SIZE);
+
+  if(state.narrowRound<totalRounds-1){
+    state.narrowRound++;
+    render();
+    return;
+  }
+
+  finishNarrowing();
+}
+
+function finishNarrowing(){
+  if(state.narrowSelected.length!==20){
+    alert(`現在${state.narrowSelected.length}人です。20人選んでね！前へ戻って追加できます。`);
+    return;
+  }
+
+  startRanking([...state.narrowSelected]);
+}
+
+function startRanking(ids){
+  if(ids.length<FINAL_COUNT){
+    alert("TOP9を作るには9人以上必要です");
+    return;
+  }
+
+  state.stage="ranking";
+  state.rankPool=shuffle(ids);
+  state.ranked=[state.rankPool[0]];
+  state.insertIndex=1;
+
+  prepareInsertion();
+}
+
+function prepareInsertion(){
+  if(state.insertIndex>=state.rankPool.length){
+    finishRanking();
+    return;
+  }
+
+  state.low=0;
+  state.high=state.ranked.length;
+  render();
+}
+
+function renderRanking(){
+  const candidateId=state.rankPool[state.insertIndex];
+
+  if(state.low>=state.high){
+    state.ranked.splice(state.low,0,candidateId);
+    state.insertIndex++;
+    prepareInsertion();
+    return;
+  }
+
+  const middle=Math.floor((state.low+state.high)/2);
+  state.currentMiddle=middle;
+
+  const opponentId=state.ranked[middle];
+  const candidate=memberById(candidateId);
+  const opponent=memberById(opponentId);
+  const progress=(state.insertIndex/state.rankPool.length)*100;
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span>2択で順位決定</span>
+        <span>${state.insertIndex+1} / ${state.rankPool.length}</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+    </div>
+
+    <section class="panel compare-wrap">
+      <h2 class="stage-title">どっちが好き？</h2>
+
+      <div class="compare-grid">
+        <div class="compare-card" onclick="chooseComparison('candidate')">
+          <img class="compare-photo" src="${candidate.image}" alt="${candidate.name}">
+          <div class="compare-name">${candidate.name}</div>
+        </div>
+
+        <div class="compare-card" onclick="chooseComparison('opponent')">
+          <img class="compare-photo" src="${opponent.image}" alt="${opponent.name}">
+          <div class="compare-name">${opponent.name}</div>
+        </div>
+      </div>
+    </section>
+  `;
+
+  saveState();
+}
+
+function chooseComparison(choice){
+  const middle=state.currentMiddle;
+
+  if(choice==="candidate"){
+    state.high=middle;
+  }else{
+    state.low=middle+1;
+  }
+
+  renderRanking();
+}
+
+function finishRanking(){
+  state.result=[...state.ranked].slice(0,FINAL_COUNT);
+  state.stage="result";
+  render();
+}
+
+function rankColor(index){
+  const colors=[
+    "#3f8d67",
+    "#a9afb3",
+    "#8a795b",
+    "#58a37e",
+    "#74b694",
+    "#478e6c",
+    "#91c8ab",
+    "#5f987b",
+    "#7eb79a"
+  ];
+
+  return colors[index]||"#58a37e";
+}
+
+function renderResult(){
+  app.innerHTML=`
+    <section class="panel">
+      <div class="result-heading">
+        <h2>雪組 好き顔9選</h2>
+        <div class="result-decoration"></div>
+      </div>
+
+      <div class="result-grid">
+        ${state.result.map((id,index)=>{
+          const member=memberById(id);
+
+          return`
+            <div class="result-card">
+              <div class="rank-badge" style="background:${rankColor(index)}">
+                ${index+1}
+              </div>
+
+              <img src="${member.image}" alt="${member.name}">
+              <div class="result-name">${member.name}</div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="result-buttons">
+        <button class="primary-button" onclick="showSaveImage()">結果画像を作る</button>
+        <button class="secondary-button" onclick="restartGame()">もう一度遊ぶ</button>
+      </div>
+    </section>
+  `;
+}
+
+function restartGame(){
+  clearSavedState();
+  state=createInitialState();
+  render();
+}
+
+/* 保存画像 */
+
+function roundedRect(ctx,x,y,width,height,radius){
+  const r=Math.min(radius,width/2,height/2);
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+width,y,x+width,y+height,r);
+  ctx.arcTo(x+width,y+height,x,y+height,r);
+  ctx.arcTo(x,y+height,x,y,r);
+  ctx.arcTo(x,y,x+width,y,r);
+  ctx.closePath();
+}
+
+function loadImage(src){
+  return new Promise((resolve,reject)=>{
+    const image=new Image();
+    image.onload=()=>resolve(image);
+    image.onerror=reject;
+    image.src=src;
+  });
+}
+
+function drawCover(ctx,image,x,y,width,height){
+  const imageRatio=image.width/image.height;
+  const boxRatio=width/height;
+
+  let sx=0,sy=0,sw=image.width,sh=image.height;
+
+  if(imageRatio>boxRatio){
+    sw=image.height*boxRatio;
+    sx=(image.width-sw)/2;
+  }else{
+    sh=image.width/boxRatio;
+    sy=(image.height-sh)*.20;
+
+    if(sy<0) sy=0;
+    if(sy+sh>image.height) sy=image.height-sh;
+  }
+
+  ctx.drawImage(image,sx,sy,sw,sh,x,y,width,height);
+}
+
+/* Canvasの雪 */
+
+function drawSnowflake(ctx,x,y,size,color,opacity=1,rotation=0){
+  ctx.save();
+  ctx.globalAlpha=opacity;
+  ctx.translate(x,y);
+  ctx.rotate(rotation);
+  ctx.strokeStyle=color;
+  ctx.lineWidth=Math.max(2,size*.09);
+  ctx.lineCap="round";
+
+  for(let i=0;i<3;i++){
+    ctx.save();
+    ctx.rotate((Math.PI/3)*i);
+
+    ctx.beginPath();
+    ctx.moveTo(-size,0);
+    ctx.lineTo(size,0);
+    ctx.stroke();
+
+    const branch=size*.55;
+    const arm=size*.22;
+
+    for(const direction of [-1,1]){
+      const px=direction*branch;
+
+      ctx.beginPath();
+      ctx.moveTo(px,0);
+      ctx.lineTo(px-direction*arm,arm);
+      ctx.moveTo(px,0);
+      ctx.lineTo(px-direction*arm,-arm);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  ctx.restore();
+}
+
+async function makeResultCanvas(){
+  const canvas=document.createElement("canvas");
+  canvas.width=1080;
+  canvas.height=1700;
+
+  const ctx=canvas.getContext("2d");
+
+  const gradient=ctx.createLinearGradient(0,0,0,1700);
+  gradient.addColorStop(0,"#fcfffd");
+  gradient.addColorStop(.5,"#f3fbf7");
+  gradient.addColorStop(1,"#e4f4eb");
+
+  ctx.fillStyle=gradient;
+  ctx.fillRect(0,0,1080,1700);
+
+  drawSnowflake(ctx,35,95,62,"#62a986",.16,-.25);
+  drawSnowflake(ctx,1040,145,72,"#79b99a",.17,.25);
+  drawSnowflake(ctx,25,1510,72,"#78b697",.17,-.2);
+  drawSnowflake(ctx,1050,1545,62,"#529c78",.15,.3);
+
+  ctx.textAlign="center";
+  ctx.fillStyle="#67977f";
+  ctx.font='700 25px Georgia, serif';
+  ctx.fillText("Y U K I - G U M I   T O P   9",540,76);
+
+  ctx.fillStyle="#354c43";
+  ctx.font='900 64px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+  ctx.fillText("雪組 好き顔9選",540,160);
+
+  ctx.strokeStyle="#88bda3";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.moveTo(235,218);
+  ctx.lineTo(470,218);
+  ctx.moveTo(610,218);
+  ctx.lineTo(845,218);
+  ctx.stroke();
+
+  drawSnowflake(ctx,540,218,19,"#589c7a",1,0);
+
+  const marginX=55;
+  const gapX=25;
+  const gapY=30;
+  const cardWidth=(1080-marginX*2-gapX*2)/3;
+  const cardHeight=405;
+  const startY=275;
+  const photoMargin=12;
+  const photoWidth=cardWidth-photoMargin*2;
+  const photoHeight=305;
+
+  for(let index=0;index<state.result.length;index++){
+    const member=memberById(state.result[index]);
+    const column=index%3;
+    const row=Math.floor(index/3);
+
+    const x=marginX+column*(cardWidth+gapX);
+    const y=startY+row*(cardHeight+gapY);
+
+    ctx.save();
+    ctx.shadowColor="rgba(70,120,95,.14)";
+    ctx.shadowBlur=22;
+    ctx.shadowOffsetY=9;
+    ctx.fillStyle="#ffffff";
+
+    roundedRect(ctx,x,y,cardWidth,cardHeight,23);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle="#ffffff";
+    roundedRect(ctx,x,y,cardWidth,cardHeight,23);
+    ctx.fill();
+
+    try{
+      const image=await loadImage(member.image);
+
+      ctx.save();
+      roundedRect(
+        ctx,
+        x+photoMargin,
+        y+photoMargin,
+        photoWidth,
+        photoHeight,
+        15
+      );
+      ctx.clip();
+
+      drawCover(
+        ctx,
+        image,
+        x+photoMargin,
+        y+photoMargin,
+        photoWidth,
+        photoHeight
+      );
+
+      ctx.restore();
+    }catch(error){
+      console.error(error);
+    }
+
+    const rankX=x+13;
+    const rankY=y+20;
+
+    ctx.beginPath();
+    ctx.arc(rankX,rankY,36,0,Math.PI*2);
+    ctx.fillStyle=rankColor(index);
+    ctx.fill();
+
+    ctx.lineWidth=4;
+    ctx.strokeStyle="#ffffff";
+    ctx.stroke();
+
+    ctx.fillStyle="#ffffff";
+    ctx.textAlign="center";
+    ctx.font='900 31px -apple-system, sans-serif';
+    ctx.fillText(String(index+1),rankX,rankY+11);
+
+    ctx.fillStyle="#354c43";
+    ctx.textAlign="center";
+    ctx.font='900 28px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+    ctx.fillText(member.name,x+cardWidth/2,y+366);
+  }
+
+  const footerY=1600;
+
+  ctx.strokeStyle="#88bda3";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.moveTo(270,footerY);
+  ctx.lineTo(470,footerY);
+  ctx.moveTo(610,footerY);
+  ctx.lineTo(810,footerY);
+  ctx.stroke();
+
+  drawSnowflake(ctx,540,footerY,17,"#589c7a",1,0);
+
+  const today=
+    new Date()
+      .toLocaleDateString("ja-JP",{
+        year:"numeric",
+        month:"2-digit",
+        day:"2-digit"
+      })
+      .replaceAll("/",".");
+
+  ctx.fillStyle="#668875";
+  ctx.textAlign="center";
+  ctx.font='500 23px Georgia, serif';
+  ctx.fillText(today,540,1660);
+
+  return canvas;
+}
+
+let latestCanvas=null;
+
+async function showSaveImage(){
+  try{
+    latestCanvas=await makeResultCanvas();
+
+    const image=document.getElementById("generatedImage");
+    image.src=latestCanvas.toDataURL("image/png");
+
+    document.getElementById("imageModal").classList.add("show");
+  }catch(error){
+    console.error(error);
+    alert("画像の作成に失敗しました");
+  }
+}
+
+document
+.getElementById("shareImageButton")
+.addEventListener("click",async()=>{
+  if(!latestCanvas) return;
+
+  latestCanvas.toBlob(async blob=>{
+    if(!blob) return;
+
+    const file=new File(
+      [blob],
+      "yukigumi-top9.png",
+      {type:"image/png"}
+    );
+
+    if(
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare({files:[file]})
+    ){
+      try{
+        await navigator.share({
+          files:[file],
+          title:"雪組 好き顔9選"
+        });
+        return;
+      }catch(error){
+        if(error.name==="AbortError") return;
+      }
+    }
+
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement("a");
+
+    link.href=url;
+    link.download="yukigumi-top9.png";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  },"image/png");
+});
+
+document
+.getElementById("closeModalButton")
+.addEventListener("click",()=>{
+  document.getElementById("imageModal").classList.remove("show");
+});
+
+render();
+</script>
+</body>
+</html>
